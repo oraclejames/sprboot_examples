@@ -25,8 +25,13 @@ public class ProductService {
     ));
 	
 	public List<Product> getAllProducts() {
-		return products;
-	}
+		//return products;
+		if(productRepo.findAll().isEmpty()) {
+			// If the repository is empty, populate it with initial products
+			return products;
+		}
+		return productRepo.findAll();
+		}
 	
 	public List<Product> getRepoProducts() {
 		return productRepo.findAll();

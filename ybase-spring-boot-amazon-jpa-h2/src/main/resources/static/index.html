@@ -1,0 +1,43 @@
+<html>
+<body>
+
+<title>YBase Spring Boot Amazon JPA H2</title>
+<h1>YBase Spring Boot Amazon JPA H2</h1>
+
+<a href="/h2-console">H2 Console</a> <br/>
+
+<a href="../home">Amazon API</a>
+
+
+<h1>Products List</h1>
+
+<div id="products"></div>
+
+<script>
+
+fetch("http://localhost:8080/products")
+.then(response => response.json())
+.then(data => {
+
+    let output = "";
+
+    data.forEach(product => {
+
+        output += `
+            <div> 
+                <h3>${product.productId} : ${product.productName}</h3>
+                <p>Price: ${product.price}</p>
+                <hr>
+            </div>
+        `;
+    });
+
+    document.getElementById("products").innerHTML = output;
+})
+.catch(error => console.log(error));
+
+</script>
+
+</body>
+
+</html>

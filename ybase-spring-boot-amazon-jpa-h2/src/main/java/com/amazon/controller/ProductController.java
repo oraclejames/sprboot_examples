@@ -18,6 +18,7 @@ public class ProductController {
 
     // 1. GET all products
     @GetMapping("/products")
+    @CrossOrigin("*")
     public List<Product> getAllProducts() {
         System.out.println("Fetching all products..."); 
         return productService.getAllProducts();
